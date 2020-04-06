@@ -30,7 +30,7 @@ class AuthController extends Controller
         if (!$user) {
             return response()->json([
                 'error' => 'Email does not exist.'
-            ], 400);
+            ], 404);
         }
 
         if ($user->verifyPassword($request->input('password'))) {
