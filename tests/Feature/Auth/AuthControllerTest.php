@@ -21,7 +21,7 @@ class AuthControllerTest extends \TestCase
             'password' => '12345'
         ]);
 
-        $result->seeStatusCode(400);
+        $result->seeStatusCode(404);
     }
 
     public function testWillReturnUnauthorized()
