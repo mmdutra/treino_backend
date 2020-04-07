@@ -22,6 +22,10 @@ class AuthControllerTest extends \TestCase
         ]);
 
         $result->seeStatusCode(404);
+
+        $result->seeJsonEquals([
+            'error' => 'Email does not exist.'
+        ]);
     }
 
     public function testWillReturnUnauthorized()
@@ -32,7 +36,7 @@ class AuthControllerTest extends \TestCase
         ]);
 
         $result->seeJsonEquals([
-            'message' => 'Unauthorized'
+            'error' => 'Unauthorized'
         ]);
 
         $result->seeStatusCode(401);

@@ -13,6 +13,9 @@ abstract class TestCase extends BaseTestCase
     {
         $app = require __DIR__.'/../bootstrap/app.php';
 
+        \Illuminate\Support\Facades\Artisan::call('migrate');
+        \Illuminate\Support\Facades\Artisan::call('db:seed');
+
         return $app;
     }
 }
