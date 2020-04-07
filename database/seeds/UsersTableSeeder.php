@@ -11,7 +11,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        // create 10 users using the user factory
-        factory(App\Models\User::class, 10)->create();
+        \Illuminate\Support\Facades\DB::table('users')->insert([
+            'name'     => 'Teste',
+            'email'    => 'jewel57@hotmail.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('12345'),
+        ]);
     }
 }

@@ -11,7 +11,10 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        // create 10 products using the user factory
-        factory(App\Models\Product::class, 10)->create();
+        \Illuminate\Support\Facades\DB::table('products')->insert([
+            'name'     => 'Teste',
+            'value'    => 1000,
+            'quantity' => 10,
+        ]);
     }
 }
