@@ -16,7 +16,7 @@ class User
     private $email;
     private $password;
 
-    public function __construct(string $name, string $email, string $password)
+    public function __construct(string $name = '', string $email = '', string $password = '')
     {
         $this->name = $name;
         $this->email = $email;
@@ -28,9 +28,11 @@ class User
         return $this->id;
     }
 
-    public function setId($id): void
+    public function setId($id): User
     {
         $this->id = $id;
+
+        return $this;
     }
 
     public function getName(): string
@@ -38,9 +40,11 @@ class User
         return $this->name;
     }
 
-    public function setName(string $name): void
+    public function setName(string $name): User
     {
         $this->name = $name;
+
+        return $this;
     }
 
     public function getEmail(): string
@@ -48,9 +52,11 @@ class User
         return $this->email;
     }
 
-    public function setEmail(string $email): void
+    public function setEmail(string $email): User
     {
         $this->email = $email;
+
+        return $this;
     }
 
     public function getPassword(): string
@@ -58,9 +64,11 @@ class User
         return $this->password;
     }
 
-    public function setPassword(string $password): void
+    public function setPassword(string $password): User
     {
         $this->password = $password;
+
+        return $this;
     }
 
     public function verifyPassword(string $password)

@@ -26,8 +26,10 @@ class ProductsController extends Controller
 
     public function find(int $id)
     {
+        $result = $this->repository->find($id);
+
         return response()->json([
-            'data' => $this->repository->find($id)
+            "data" => $result->toArray()
         ],200);
     }
 }
