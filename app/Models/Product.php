@@ -27,9 +27,11 @@ class Product
         return $this->id;
     }
 
-    public function setId(int $id): void
+    public function setId(int $id): Product
     {
         $this->id = $id;
+
+        return $this;
     }
 
     public function getName(): string
@@ -37,9 +39,11 @@ class Product
         return $this->name;
     }
 
-    public function setName(string $name): void
+    public function setName(string $name): Product
     {
         $this->name = $name;
+
+        return $this;
     }
 
     public function getValue(): float
@@ -47,9 +51,11 @@ class Product
         return $this->value;
     }
 
-    public function setValue(float $value): void
+    public function setValue(float $value): Product
     {
         $this->value = $value;
+
+        return $this;
     }
 
     public function getQuantity(): int
@@ -57,8 +63,20 @@ class Product
         return $this->quantity;
     }
 
-    public function setQuantity(int $quantity): void
+    public function setQuantity(int $quantity): Product
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'value'=> $this->getValue(),
+            'quantity' => $this->getQuantity()
+        ];
     }
 }
