@@ -20,7 +20,7 @@ class ProductRepository extends Repository
 
     public function readAll()
     {
-        return $this->createQueryBuilder()->get();
+        return $this->createQueryBuilder()->select('id', 'name', 'value', 'quantity')->get();
     }
 
     public function find(int $id)
