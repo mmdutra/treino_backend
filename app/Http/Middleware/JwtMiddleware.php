@@ -24,11 +24,13 @@ class JwtMiddleware
 
         } catch(Exception $e) {
             return response()->json([
-                'error' => 'unauthorized'
+                'error' => 'Unauthorized'
             ], 400);
         }
 
         $user = (new UserRepository())->find($credentials->sub);
+
+        if (!$user) return response()->json([ 'error' => 'Unauthorized' ], 401);
 
         // Now let's put the user in the request class so that you can grab it from there
         $request->auth = $user;

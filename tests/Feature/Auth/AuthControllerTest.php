@@ -2,6 +2,8 @@
 
 namespace Feature\Auth;
 
+use App\Models\User;
+
 class AuthControllerTest extends \TestCase
 {
     public function testWillReturnToken()
@@ -33,6 +35,19 @@ class AuthControllerTest extends \TestCase
         $result = $this->post('api/auth/login', [
             'email' => 'jewel57@hotmail.com',
             'password' => '123456'
+        ]);
+
+        $result->seeJsonEquals([
+            'error' => 'Unauthorized'
+        ]);
+
+        $result->seeStatusCode(401);
+    }
+
+    public function willReturnUnauthorizedWhenPassANotValidToken()
+    {
+        $result = $this->get('products', [
+            'Authorization' => (new User())->setId(10)->getToken()
         ]);
 
         $result->seeJsonEquals([
