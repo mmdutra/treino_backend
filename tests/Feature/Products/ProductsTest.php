@@ -3,7 +3,6 @@
 namespace Feature\Products;
 
 use App\Models\User;
-use Firebase\JWT\JWT;
 
 class ProductsTest extends \TestCase
 {
@@ -27,6 +26,19 @@ class ProductsTest extends \TestCase
                 'id', 'name', 'value', 'quantity'
             ]
         ]);
+    }
+
+    public function willReturnUnauthorizedWhenPassANotValidToken()
+    {
+        $result = $this->get('products', [
+            'Authorization' => (new User())->setId(10)->getToken()
+        ]);
+
+        $result->seeJsonEquals([
+            'error' => 'Unauthorized'
+        ]);
+
+        $result->seeStatusCode(401);
     }
 
     public function getToken(int $id)
