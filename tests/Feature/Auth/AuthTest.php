@@ -2,7 +2,7 @@
 
 namespace Feature\Auth;
 
-class AuthControllerTest extends \TestCase
+class AuthTest extends \TestCase
 {
     public function testWillReturnToken()
     {
